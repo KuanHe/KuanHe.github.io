@@ -1,33 +1,32 @@
-function setup() {
+var x1 = 150;
+var y1 = 20;
+var x2 = 150;
+var y2 = 20
+var x3 = 200;
+var y3 = 70;
+var x4 = 200;
+var y4 = 70
+var x3 = 200;
+var y3 = 70;
+var x4 = 200;
+var y4 = 70
 
-  createCanvas(640, 360);
-var radius = min(width, height) / 2; 
-  secondsRadius = radius * 0.72;
-  minutesRadius = radius * 0.60;
-  hoursRadius = radius * 0.50;
-  clockDiameter = radius * 1.8;
-
-  cx = width / 2;
-  cy = height / 2;
+function setup(){
+  createCanvas(900,900);
 }
 
-function draw() {
-  background(0);
-
-  // Draw the clock background
-  fill(30);
+function draw(){
   noStroke();
-  ellipse(cx, cy, clockDiameter, clockDiameter);
-  var s = map(second(), 0, 60, 0, TWO_PI) - HALF_PI;
-  var m = map(minute() + norm(second(), 0, 60), 0, 60, 0, TWO_PI) - HALF_PI;
-  var h = map(hour() + norm(minute(), 0, 60), 0, 24, 0, TWO_PI * 2) - HALF_PI;
-  stroke(255);
-  strokeWeight(2);
-  line(cx, cy, cx + cos(s) * secondsRadius, cy + sin(s) * secondsRadius);
-  strokeWeight(2);
-  line(cx, cy, cx + cos(m) * minutesRadius, cy + sin(m) * minutesRadius);
-  strokeWeight(2);
-  line(cx, cy, cx + cos(h) * hoursRadius, cy + sin(h) * hoursRadius);
-}
+  background(100);
+  var s = second()/5;
+  var m = minute()/5;
+  var h = hour()/5;
 
+  fill(255,0,0,150) // green
+  rect(x1,y1,x2,20*map(s, 0, 60, 0,400));
+  fill(255,255,0,150) // yellow
+  rect(x3,y3,20*map(s, 0, 60, 0,400),10*map(s, 0, 60, 0,400));
+  fill(0,0,255,150) // blue
+  rect(2*x3,2*y3,2*x4,5*map(s, 0, 60, 0,400));
+}
 
